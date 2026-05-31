@@ -131,17 +131,22 @@ button { font-family: var(--fonte-bod); }
   width: 100%;
   height: var(--nav-h);
   z-index: 100;
-  background: rgba(13,11,9,0.97);
-  border-bottom: 1px solid var(--border);
+  background: rgba(13,11,9,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(245,166,35,0.1);
   padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background 0.3s;
 }
 
-#navbar.scrolled { border-color: var(--border-hi); }
+#navbar.scrolled {
+  background: rgba(13,11,9,0.75);
+  border-color: rgba(245,166,35,0.2);
+}
 
 .nav-logo {
   display: flex;
@@ -273,57 +278,68 @@ button { font-family: var(--fonte-bod); }
 
 #hero {
   min-height: 100vh;
-  background: var(--preto);
+  background: linear-gradient(to bottom, rgba(13,11,9,0.3) 0%, rgba(13,11,9,0.6) 40%, rgba(13,11,9,0.95) 100%),
+              url('../images/Banner-mobile.png') no-repeat center top / auto 60%;
+  background-color: var(--preto);
   display: flex;
   align-items: center;
   padding: calc(var(--nav-h) + 60px) 5% 80px;
   position: relative;
-  overflow: hidden;
+}
+
+@media (min-width: 861px) and (max-width: 1024px) {
+  #hero {
+    background: linear-gradient(to bottom, rgba(13,11,9,0.2) 0%, rgba(13,11,9,0.5) 35%, rgba(13,11,9,0.95) 100%),
+                url('../images/Banner-tablet.png') no-repeat center top / contain;
+    background-color: var(--preto);
+  }
+}
+
+@media (min-width: 1025px) {
+  #hero {
+    background: linear-gradient(to right, rgba(13,11,9,0.95) 0%, rgba(13,11,9,0.7) 35%, rgba(13,11,9,0.1) 75%, transparent 100%),
+                url('../images/Banner.png') no-repeat right center / cover;
+    background-color: var(--preto);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 860px) {
+  #hero {
+    background: linear-gradient(to bottom, rgba(13,11,9,0.15) 0%, rgba(13,11,9,0.5) 35%, rgba(13,11,9,0.95) 100%),
+                url('../images/Banner-tablet.png') no-repeat center top / auto 25%;
+    background-color: var(--preto);
+  }
 }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: 1fr;
+  gap: 0;
   align-items: center;
-  max-width: 1200px;
+  max-width: 700px;
   width: 100%;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  margin: 0;
+}
+
+@media (min-width: 861px) {
+  .hero-inner {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    max-width: 1280px;
+    width: 100%;
+  }
 }
 
 .hero-content { position: relative; z-index: 1; }
 
 .hero-img-wrap {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
+  display: none;
 }
 
-.hero-img-wrap img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 14px;
-  display: block;
-  box-shadow:
-    0 40px 100px rgba(0,0,0,0.6),
-    0 0 0 1px rgba(245,166,35,0.1);
-  position: relative;
-}
-
-.hero-img-wrap::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, rgba(13,11,9,0.8) 10%, rgba(13,11,9,0.3) 50%, transparent 100%);
-  border-radius: 14px;
-  pointer-events: none;
-  z-index: 1;
+@media (max-width: 860px) {
+  .hero-img-wrap {
+    display: none;
+  }
 }
 
 .hero-eyebrow {
@@ -492,13 +508,31 @@ button { font-family: var(--fonte-bod); }
 
 /* ─── 9. Cardápio — Itens ──────────────────────────────────────────── */
 
-/* Container: carrossel + setas */
+/* Container: só o list */
 .menu-carousel {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
   position: relative;
   max-width: 100%;
+}
+
+/* Setas abaixo do carrossel */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .menu-list {
+    padding: 0 5% !important;
+    gap: 0 !important;
+  }
+
+  .menu-item {
+    width: 90vw !important;
+    min-width: 90vw !important;
+    scroll-snap-align: center;
+  }
 }
 
 /* Carrossel 1x4 (4 cards em linha horizontal) */
@@ -512,6 +546,21 @@ button { font-family: var(--fonte-bod); }
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+@media (max-width: 600px) {
+  .menu-list {
+    gap: 0;
+    padding: 0 10px;
+  }
+
+  .menu-item {
+    width: calc(100vw - 20px);
+    margin-right: 0;
+  }
+  
 }
 
 .menu-list::-webkit-scrollbar { display: none; }
@@ -594,12 +643,12 @@ button { font-family: var(--fonte-bod); }
 }
 
 .menu-item-desc {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--texto);
   line-height: 1.4;
   margin-bottom: 0.6rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -730,9 +779,15 @@ button { font-family: var(--fonte-bod); }
   background: var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 80px 5%;
+  padding: 60px 5%;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  #pedir {
+    padding: 40px 5%;
+  }
 }
 
 .pedir-inner {
@@ -781,6 +836,12 @@ button { font-family: var(--fonte-bod); }
   background: var(--preto);
 }
 
+@media (max-width: 600px) {
+  #sobre {
+    padding: 60px 5%;
+  }
+}
+
 .sobre-inner {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -788,6 +849,13 @@ button { font-family: var(--fonte-bod); }
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .sobre-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
 
 .sobre-visual {
@@ -903,6 +971,12 @@ button { font-family: var(--fonte-bod); }
   align-items: center;
 }
 
+@media (max-width: 600px) {
+  #info {
+    padding: 60px 5%;
+  }
+}
+
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -910,6 +984,14 @@ button { font-family: var(--fonte-bod); }
   margin-top: 2.5rem;
   max-width: 1200px;
   width: 100%;
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .info-card {
@@ -1021,6 +1103,7 @@ button { font-family: var(--fonte-bod); }
   margin-top: 1.1rem;
   font-size: 0.78rem;
   padding: 10px 20px;
+  white-space: nowrap;
 }
 
 
@@ -1109,7 +1192,7 @@ footer {
   position: fixed;
   top: 0; right: 0;
   height: 100%;
-  width: 380px;
+  width: 340px;
   max-width: 95vw;
   background: #0f0d0b;
   border-left: 1px solid var(--border-hi);
@@ -1326,6 +1409,18 @@ footer {
   box-shadow: 0 6px 26px rgba(37,211,102,0.55);
 }
 
+@media (max-width: 600px) {
+  .wpp-float {
+    bottom: 100px;
+    right: 16px;
+  }
+
+  .menu-item {
+    width: calc(100vw - 10% - 1rem) !important;
+    min-width: calc(100vw - 10% - 1rem) !important;
+  }
+}
+
 
 /* ─── 16. Animações ────────────────────────────────────────────────── */
 
@@ -1340,7 +1435,21 @@ footer {
 @media (max-width: 860px) {
   .hero-inner {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+  }
+
+  .hero-img-wrap {
+    justify-content: center;
+    order: -1;
+  }
+
+  .hero-img-wrap img {
+    max-width: 420px;
+    border-radius: 12px;
+  }
+
+  .hero-img-wrap::before {
+    border-radius: 12px;
   }
 
   /* Strip: carrossel infinito */
@@ -1365,8 +1474,10 @@ footer {
     top: var(--nav-h);
     left: 0;
     width: 100%;
-    background: #0f0d0b;
-    border-bottom: 1px solid var(--border-hi);
+    background: rgba(13,11,9,0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,166,35,0.1);
     padding: 1.5rem 5%;
     gap: 1.1rem;
     z-index: 99;
@@ -1408,19 +1519,12 @@ footer {
   }
 
   .menu-item {
-    width: calc(100vw - 100px);
-    min-width: calc(100vw - 100px);
-    max-width: calc(100vw - 100px);
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
     flex-direction: column;
     align-items: stretch;
   }
-
-  /* Para SPRINT 2: reduzir para 160px se necessário */
-  /* .menu-item {
-    width: 160px;
-    min-width: 160px;
-    max-width: 160px;
-  } */
 
   .menu-item-img {
     height: 200px;

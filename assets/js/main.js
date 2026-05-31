@@ -162,7 +162,7 @@ function syncCartUI() {
   if (!body) return;
 
   if (cart.length === 0) {
-    body.innerHTML = '<p class="cart-empty">Sua garagem está vazia.<br>Escolha seus favoritos acima.</p>';
+    body.innerHTML = '<p class="cart-empty">🍔 Sua garagem está vazia.<br>Escolha seus favoritos acima.</p>';
     if (checkoutBtn) checkoutBtn.disabled = true;
   } else {
     body.innerHTML = cart.map(item => `
@@ -273,11 +273,10 @@ function initCarouselArrows() {
   if (!list || !btnPrev || !btnNext) return;
 
   const scroll = (direction) => {
-    // Detecta tamanho do card dinamicamente
     const isMobile = window.innerWidth <= 600;
     const cardWidth = isMobile
-      ? window.innerWidth - 100  // 1 card por vez em mobile
-      : 260;                     // 4 cards em desktop
+      ? window.innerWidth * 0.9   // 90vw exato
+      : 280;
 
     list.scrollBy({
       left: direction === 'prev' ? -cardWidth : cardWidth,

@@ -177,13 +177,13 @@ const MENU_DATA = [
   {
     cat:         'combos',
     name:        'Combo Meu',
-    badge:       'MAIS COMPLETO',
+    badge:       'MAIS VENDIDO',
     badgeClass:  'gold',
     desc:        'Corvette (Pão Brioche, Bacon, Blend Bovino 170g, Queijo Mussarela, Cebola Caramelizada, Tomate, Alface e Maionese Caseira) + 3 Anéis de Cebola + Batata Frita + Coca-Cola 350ml',
     price:       'R$ 49,90',
     emoji:       '🍔🍟🥤',
     image:       null,
-    footerBadge: 'Melhor custo-benefício',
+    footerBadge: 'Economize R$ 8,90',
     highlight:   true,
   },
 
