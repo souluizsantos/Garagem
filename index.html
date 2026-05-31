@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Garagem Hambúrguer Artesanal — Blend bovino exclusivo, pão brioche, maionese caseira. Luzerna, SC." />
+  <meta name="theme-color" content="#F5A623" />
+  <meta property="og:title"       content="Garagem Hambúrguer Artesanal" />
+  <meta property="og:description" content="Blend bovino exclusivo, pão brioche fresquinho, maionese caseira. Luzerna, SC." />
+  <meta property="og:image"       content="assets/images/HAMBÚRGUER.png" />
+  <meta property="og:url"         content="https://garagemhamburguer.com.br" />
+  <meta property="og:type"        content="website" />
+  <title>Garagem Hambúrguer Artesanal | Luzerna - SC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- ══ NAVBAR ════════════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#hero">
+      <img src="assets/images/logo.png" alt="Garagem Hambúrguer" />
+      <span>GARAGEM <em>HAMBÚRGUER</em></span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#sobre">Nossa História</a></li>
+      <li><a href="#info">Onde Estamos</a></li>
+      <li>
+        <a href="https://pedido.anota.ai/loja/garagem-hamburguer"
+           target="_blank" rel="noopener" class="nav-cta">
+          Pedir Online
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="nav-cart-btn" id="navCartBtn" aria-label="Ver pedido">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="nav-cart-label">Meu Pedido</span>
+        <span class="cart-badge" id="cartBadge"></span>
+      </button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Luzerna &mdash; Santa Catarina</p>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <h1 class="hero-title">
+          GARAGEM<br>
+          <span>HAMBÚRGUER</span>
+        </h1>
+        <p class="hero-sub">
+          Blend bovino moído na hora, maionese feita no dia, pão brioche.<br>
+          Sem congelado, sem fórmula pronta.
+        </p>
+        <div class="hero-actions">
+          <a href="#cardapio" class="btn-primary">Ver Cardápio</a>
+          <a href="https://pedido.anota.ai/loja/garagem-hamburguer"
+             target="_blank" rel="noopener" class="btn-ghost">
+            Fazer Pedido Online
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-img-wrap">
+        <img src="assets/images/HAMBÚRGUER.png"
+             alt="Hambúrguer artesanal Garagem — blend bovino, pão brioche"
+             loading="eager" />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ STRIP / DIFERENCIAIS ══════════════════════════════════════════
+       strip-inner é duplicado para o loop infinito no mobile ser seamless.
+       No desktop apenas o primeiro é visível (o segundo fica hidden via CSS).
+  ════════════════════════════════════════════════════════════════════ -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+
+      <div class="strip-inner">
+        <span>Blend Bovino Exclusivo</span>
+        <span class="sep">/</span>
+        <span>Pão Brioche Fresquinho</span>
+        <span class="sep">/</span>
+        <span>Maionese Caseira</span>
+        <span class="sep">/</span>
+        <span>Negócio de Família</span>
+        <span class="sep">/</span>
+        <span>Terça a Domingo &mdash; 18h30</span>
+        <span class="sep">/</span>
+      </div>
+
+      <!-- Cópia exata para fechar o loop sem salto visual -->
+      <div class="strip-inner" aria-hidden="true">
+        <span>Blend Bovino Exclusivo</span>
+        <span class="sep">/</span>
+        <span>Pão Brioche Fresquinho</span>
+        <span class="sep">/</span>
+        <span>Maionese Caseira</span>
+        <span class="sep">/</span>
+        <span>Negócio de Família</span>
+        <span class="sep">/</span>
+        <span>Terça a Domingo &mdash; 18h30</span>
+        <span class="sep">/</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══ CARDÁPIO ═══════════════════════════════════════════════════════
+       Os itens são gerados por main.js a partir de menu-data.js.
+       Para adicionar/editar itens, edite apenas assets/js/menu-data.js.
+  ════════════════════════════════════════════════════════════════════ -->
+  <section id="cardapio">
+    <div class="section-head">
+      <h2>CARDÁPIO</h2>
+      <p>Cada hambúrguer batizado com o nome de um carro clássico. Cada um com identidade própria.</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Categorias do cardápio">
+      <button class="menu-tab active" data-cat="all"         role="tab" aria-selected="true">Todos</button>
+      <button class="menu-tab"        data-cat="hamburgers"  role="tab" aria-selected="false">Hambúrgueres</button>
+      <button class="menu-tab"        data-cat="combos"      role="tab" aria-selected="false">Combos</button>
+      <button class="menu-tab"        data-cat="porcoes"     role="tab" aria-selected="false">Porções</button>
+      <button class="menu-tab"        data-cat="bebidas"     role="tab" aria-selected="false">Bebidas</button>
+    </div>
+
+    <div class="menu-list" id="menuList" role="list">
+      <!-- renderizado por main.js -->
+    </div>
+  </section>
+
+
+  <!-- ══ CTA PEDIR ══════════════════════════════════════════════════════ -->
+  <section id="pedir">
+    <div class="pedir-inner">
+      <div class="pedir-text">
+        <h2>COM FOME?</h2>
+        <p>Monte seu pedido aqui e finalize direto pelo WhatsApp, ou peça pelo nosso sistema de delivery.</p>
+      </div>
+      <div class="pedir-actions">
+        <button class="btn-primary" id="btnAbrirCarrinho">
+          Ver Meu Pedido
+        </button>
+        <a href="https://pedido.anota.ai/loja/garagem-hamburguer"
+           target="_blank" rel="noopener" class="btn-ghost">
+          Delivery Online
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ NOSSA HISTÓRIA ════════════════════════════════════════════════ -->
+  <section id="sobre">
+    <div class="sobre-inner">
+
+      <div class="sobre-visual">
+        <!--
+          Troque pela foto real da loja quando disponível:
+          <img src="assets/images/foto-garagem.jpg" alt="Garagem Hambúrguer Artesanal" />
+        -->
+        <div class="sobre-placeholder">
+          <img src="assets/images/HAMBÚRGUER.png"
+               alt="Hambúrguer artesanal Garagem"
+               loading="lazy" />
+        </div>
+        <div class="sobre-stats">
+          <div class="sobre-stat">
+            <strong>3+</strong>
+            <span>Anos</span>
+          </div>
+          <div class="sobre-stat">
+            <strong>16</strong>
+            <span>Receitas</span>
+          </div>
+          <div class="sobre-stat">
+            <strong>100%</strong>
+            <span>Artesanal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sobre-text">
+        <p class="sobre-label">Nossa Garagem</p>
+        <h2>NOSSA<br><span>HISTÓRIA</span></h2>
+        <p>
+          Tudo começou com uma ideia simples: fazer o melhor hambúrguer de Luzerna.
+          Sem franquia, sem rede, sem fórmula pronta. Só carne boa, receita testada e
+          vontade de fazer diferente.
+        </p>
+        <p>
+          A Garagem nasceu como negócio de família. As receitas foram desenvolvidas ao longo
+          de meses de testes, degustações e muito cuidado. O que começou na garagem
+          virou referência na cidade.
+        </p>
+        <p>
+          Cada hambúrguer que sai daqui carrega o mesmo cuidado do primeiro dia:
+          blend bovino moído na hora, maionese caseira feita no dia, pão brioche macio
+          e ingredientes que você consegue pronunciar sem precisar de manual.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ ONDE ESTAMOS ══════════════════════════════════════════════════ -->
+  <section id="info">
+    <div class="section-head">
+      <h2>ONDE ESTAMOS</h2>
+    </div>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Horários</h3>
+        <table class="horario-table">
+          <tr><td>Segunda-feira</td><td>Fechado</td></tr>
+          <tr><td>Terça a Sexta</td><td>18h30 &ndash; 22h30</td></tr>
+          <tr><td>Sábado</td><td>18h00 &ndash; 23h00</td></tr>
+          <tr><td>Domingo</td><td>18h00 &ndash; 22h00</td></tr>
+        </table>
+        <div id="statusAoVivo" class="status-pill closed">Verificando horário&hellip;</div>
+      </div>
+
+      <div class="info-card">
+        <h3>Localização</h3>
+        <p>Luzerna, Santa Catarina &mdash; SC</p>
+        <p class="info-note">Endereço completo disponível ao realizar o pedido</p>
+        <!--
+          Mapa: gere o iframe em maps.google.com → Compartilhar → Incorporar
+          e substitua o src abaixo pelo código gerado com seu endereço exato.
+        -->
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=Luzerna,SC,Brasil&z=14&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa Luzerna SC">
+          </iframe>
+        </div>
+        <a href="https://maps.google.com/?q=Luzerna,SC,Brasil"
+           target="_blank" rel="noopener" class="btn-primary info-btn">
+          Abrir no Maps
+        </a>
+      </div>
+
+      <div class="info-card">
+        <h3>Contato</h3>
+        <p>Pedido online pelo nosso sistema de delivery, ou direto pelo WhatsApp.</p>
+        <a href="https://pedido.anota.ai/loja/garagem-hamburguer"
+           target="_blank" rel="noopener" class="btn-primary info-btn">
+          Fazer Pedido Online
+        </a>
+        <!--
+          Substitua 5549XXXXXXXXX pelo número real.
+          Formato: 55 (Brasil) + DDD + número. Ex: 5549999999999
+        -->
+        <a href="https://wa.me/5549XXXXXXXXX?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido."
+           target="_blank" rel="noopener" class="btn-wpp-text">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">GARAGEM <span>HAMBÚRGUER</span></div>
+        <p class="footer-tagline">Artesanal &middot; Luzerna &middot; SC</p>
+      </div>
+
+      <div class="footer-social" role="list" aria-label="Redes sociais">
+        <a href="https://www.instagram.com/garagem.artesanaishamburguer/"
+           target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Substitua # pelo link real do Facebook -->
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <!-- Substitua 5549XXXXXXXXX pelo número real -->
+        <a href="https://wa.me/5549XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Garagem Hambúrguer Artesanal &mdash; Luzerna, SC.
+    </div>
+  </footer>
+
+
+  <!-- ══ CARRINHO — OVERLAY + DRAWER ═══════════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+  <aside class="cart-drawer" id="cartDrawer"
+         role="dialog" aria-modal="true" aria-label="Seu pedido">
+
+    <div class="cart-header">
+      <h2 class="cart-title">Seu Pedido</h2>
+      <button class="cart-close" id="cartClose" aria-label="Fechar pedido">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-body" id="cartItems">
+      <!-- renderizado por main.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <button class="btn-checkout" id="btnCheckout" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Finalizar pelo WhatsApp
+      </button>
+      <p class="cart-note">
+        Ao finalizar, você será redirecionado ao WhatsApp com o resumo do pedido.
+      </p>
+    </div>
+
+  </aside>
+
+
+  <!-- ══ BOTÃO FLUTUANTE WHATSAPP ═══════════════════════════════════════
+       Substitua 5549XXXXXXXXX pelo número real.
+  ════════════════════════════════════════════════════════════════════ -->
+  <a class="wpp-float"
+     href="https://wa.me/5549XXXXXXXXX?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido."
+     target="_blank" rel="noopener"
+     aria-label="Falar no WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+
+  <!-- Scripts: dados antes da lógica -->
+  <script src="assets/js/menu-data.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
