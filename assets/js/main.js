@@ -12,7 +12,7 @@
  * Formato: código do país (55) + DDD + número, sem espaços ou traços.
  * Exemplo: '5549999999999'
  */
-const WPP_NUMBER = '5549XXXXXXXXX';
+const WPP_NUMBER = '554999960317';
 
 let cart = [];   // [{ name, price, priceNum, qty }]
 
@@ -55,7 +55,7 @@ function buildItem(item) {
             data-name="${item.name}"
             data-price="${item.price}"
             aria-label="Adicionar ${item.name} ao pedido">
-      Adicionar
+      Quero Esse
     </button>
   </div>
 </div>`;
@@ -157,7 +157,7 @@ function syncCartUI() {
   if (!body) return;
 
   if (cart.length === 0) {
-    body.innerHTML = '<p class="cart-empty">Nenhum item adicionado.<br>Navegue pelo cardápio e clique em "Adicionar".</p>';
+    body.innerHTML = '<p class="cart-empty">Sua garagem está vazia.<br>Escolha seus favoritos acima.</p>';
     if (checkoutBtn) checkoutBtn.disabled = true;
   } else {
     body.innerHTML = cart.map(item => `
@@ -257,6 +257,35 @@ function initScrollEffect() {
 
 
 /* ─────────────────────────────────────────
+   CARROSSEL NAVEGAÇÃO (setas)
+───────────────────────────────────────── */
+
+function initCarouselArrows() {
+  const list = document.getElementById('menuList');
+  const btnPrev = document.getElementById('carouselPrev');
+  const btnNext = document.getElementById('carouselNext');
+
+  if (!list || !btnPrev || !btnNext) return;
+
+  const scroll = (direction) => {
+    // Detecta tamanho do card dinamicamente
+    const isMobile = window.innerWidth <= 600;
+    const cardWidth = isMobile
+      ? window.innerWidth - 100  // 1 card por vez em mobile
+      : 260;                     // 4 cards em desktop
+
+    list.scrollBy({
+      left: direction === 'prev' ? -cardWidth : cardWidth,
+      behavior: 'smooth'
+    });
+  };
+
+  btnPrev.addEventListener('click', () => scroll('prev'));
+  btnNext.addEventListener('click', () => scroll('next'));
+}
+
+
+/* ─────────────────────────────────────────
    STATUS AO VIVO (horário de funcionamento)
 ───────────────────────────────────────── */
 
@@ -309,6 +338,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initScrollEffect();
 
+  // Carrossel
+  initCarouselArrows();
+
   // Status de funcionamento
   updateStatus();
   setInterval(updateStatus, 60_000);
@@ -320,10 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addToCart(btn.dataset.name, btn.dataset.price);
 
-    btn.textContent = 'Adicionado';
+    btn.textContent = 'Adicionado ✓';
     btn.classList.add('added');
     setTimeout(() => {
-      btn.textContent = 'Adicionar';
+      btn.textContent = 'Quero Esse';
       btn.classList.remove('added');
     }, 1600);
   });
