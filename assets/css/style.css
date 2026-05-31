@@ -473,61 +473,67 @@ button { font-family: var(--fonte-bod); }
 
 /* ─── 9. Cardápio — Itens ──────────────────────────────────────────── */
 
+/* Centra heading, tabs e grid dentro de #cardapio */
+#cardapio .section-head,
+#cardapio .menu-tabs {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid marketplace — base desktop (3 colunas) */
 .menu-list {
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .menu-list:empty::after {
   content: 'Carregando cardápio\2026';
-  display: block;
+  grid-column: 1 / -1;
+  text-align: center;
   color: var(--texto);
   padding: 2rem 0;
   font-style: italic;
   font-size: 0.9rem;
 }
 
+/* ── Card base ── */
 .menu-item {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.18s;
-}
-
-.menu-item-img {
-  width: 88px;
-  height: 88px;
-  border-radius: 8px;
-  object-fit: cover;
-  flex-shrink: 0;
+  flex-direction: column;
+  background: var(--cinza-esc);
   border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+}
+
+.menu-item:hover {
+  border-color: rgba(245,166,35,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* Foto */
+.menu-item-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
   display: block;
+  flex-shrink: 0;
+  border-radius: 0;
+  border: none;
 }
 
-.menu-item:hover { background: rgba(255,255,255,0.014); }
-
-.menu-item:last-child { border-bottom: none; }
-
-/* Best-sellers: Corvette, Cadillac, Landau */
-.menu-item.featured {
-  padding-left: 0.75rem;
-  border-left: 1px solid rgba(245,166,35,0.3);
+/* Corpo */
+.menu-item-info {
+  padding: 0.875rem 1rem 0.5rem;
+  flex: 1;
+  min-width: 0;
 }
-
-/* Oferta âncora: Combo Meu */
-.menu-item.destaque {
-  padding: 1rem 1rem;
-  margin: 0.5rem 0;
-  border-left: 2px solid var(--amber);
-  background: rgba(245,166,35,0.03);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-.menu-item.menu-hidden { display: none; }
-
-.menu-item-info { flex: 1; min-width: 0; }
 
 .menu-item-name {
   font-family: var(--fonte-tit);
@@ -540,8 +546,6 @@ button { font-family: var(--fonte-bod); }
   gap: 8px;
   flex-wrap: wrap;
 }
-
-.menu-item.destaque .menu-item-name { color: var(--amber); }
 
 .menu-item-badge {
   font-size: 0.58rem;
@@ -564,19 +568,26 @@ button { font-family: var(--fonte-bod); }
   font-size: 0.8rem;
   color: var(--texto);
   line-height: 1.6;
-  max-width: 520px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* Rodapé do card: preço + botão */
 .menu-item-right {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.6rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 1rem;
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
 
 .menu-item-price {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--amber);
   white-space: nowrap;
@@ -590,10 +601,11 @@ button { font-family: var(--fonte-bod); }
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 7px 16px;
+  padding: 7px 14px;
   border-radius: var(--radius);
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: border-color 0.18s, color 0.18s, background 0.18s;
 }
 
@@ -606,6 +618,27 @@ button { font-family: var(--fonte-bod); }
   background: var(--amber);
   border-color: var(--amber);
   color: #0D0B09;
+}
+
+/* Best-sellers: borda âmbar sutil no topo */
+.menu-item.featured {
+  border-top: 2px solid rgba(245,166,35,0.45);
+}
+
+/* Oferta âncora: Combo Meu */
+.menu-item.destaque {
+  border: 2px solid var(--amber);
+  background: rgba(245,166,35,0.04);
+  box-shadow: 0 0 24px rgba(245,166,35,0.12);
+}
+
+.menu-item.destaque .menu-item-name { color: var(--amber); }
+
+.menu-item.menu-hidden { display: none; }
+
+/* 2 colunas: tablets e iPad (até 1100px) */
+@media (max-width: 1100px) {
+  .menu-list { grid-template-columns: repeat(2, 1fr); }
 }
 
 
@@ -1195,6 +1228,17 @@ footer {
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  /* Strip: carrossel infinito */
+  .strip-track {
+    animation: marquee-strip 22s linear infinite;
+    width: max-content;
+  }
+
+  .strip-inner {
+    padding: 13px 2.5rem;
+    flex-shrink: 0;
   }
 
   .hero-img-wrap {
