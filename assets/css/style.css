@@ -278,6 +278,7 @@ button { font-family: var(--fonte-bod); }
   align-items: center;
   padding: calc(var(--nav-h) + 60px) 5% 80px;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-inner {
@@ -288,6 +289,8 @@ button { font-family: var(--fonte-bod); }
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content { position: relative; z-index: 1; }
@@ -296,6 +299,7 @@ button { font-family: var(--fonte-bod); }
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
 }
 
 .hero-img-wrap img {
@@ -306,6 +310,20 @@ button { font-family: var(--fonte-bod); }
   box-shadow:
     0 40px 100px rgba(0,0,0,0.6),
     0 0 0 1px rgba(245,166,35,0.1);
+  position: relative;
+}
+
+.hero-img-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(13,11,9,0.8) 10%, rgba(13,11,9,0.3) 50%, transparent 100%);
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-eyebrow {
@@ -1335,19 +1353,6 @@ footer {
     padding: 13px 2.5rem;
     flex-shrink: 0;
   }
-
-  .hero-img-wrap {
-    justify-content: center;
-    order: -1;
-  }
-
-  .hero-img-wrap img {
-    max-width: 300px;
-    border-radius: 12px;
-  }
-
-  /* Esconde o segundo CTA no mobile — mantém foco no "Ver Cardápio" */
-  .hero-actions .btn-ghost { display: none; }
 
   .nav-links { display: none; }
   .nav-cart-label { display: none; }

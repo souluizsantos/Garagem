@@ -1,6 +1,11 @@
 /*
  * main.js — Garagem Hambúrguer Artesanal
- * Depende de menu-data.js (carregado antes deste arquivo)
+ *
+ * Lógica principal: renderização de cardápio, gerenciamento de carrinho,
+ * filtros por categoria, navegação e checkout via WhatsApp.
+ *
+ * Dependência: menu-data.js (MENU_DATA global)
+ * Sem dependências externas (vanilla JavaScript)
  */
 
 /* ─────────────────────────────────────────
