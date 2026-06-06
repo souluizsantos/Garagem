@@ -1417,35 +1417,48 @@ footer {
   font-size: 0.6rem;
   text-align: center;
 }
-}
 
 .btn-checkout {
   width: 100%;
-  background: #25D366;
-  color: #fff;
-  border: none;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 14px 20px;
-  border-radius: var(--radius);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  transition: background 0.18s, transform 0.18s;
+  gap: 10px;
+  padding: 14px 20px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--fonte-tit);
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25);
 }
 
 .btn-checkout:hover:not(:disabled) {
-  background: #1da84f;
-  transform: translateY(-1px);
+  background: #1fb95a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.btn-checkout:active:not(:disabled) {
+  transform: translateY(0px);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
 }
 
 .btn-checkout:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+.btn-checkout svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+  flex-shrink: 0;
 }
 
 .cart-note {
